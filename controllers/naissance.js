@@ -4,7 +4,7 @@ class NaissanceController{
 
      static getNumberNaissance(callback){
       //abscence de la dim naissance
-      connection.query('SELECT count(id) as nb FROM datawrehouse_bunec.dim_mariages;' , (error, result)=>{
+      connection.query('SELECT  nationalite_epouse , COUNT(lieu_epouse) as nombre FROM dim_publications group by nationalite_epouse' , (error, result)=>{
          if(error) throw error ;
          callback(result) ;
          console.log(result);
