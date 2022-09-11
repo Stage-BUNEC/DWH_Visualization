@@ -102,21 +102,7 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Naissance par Année</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Option suplementaire:</div>
-                                            <a class="dropdown-item" href="#">exporter</a>
-                                            <a class="dropdown-item" href="#">naissance par Jour</a>
-                                            <a class="dropdown-item" href="#">naissance par Mois</a>
-                                            <a class="dropdown-item" href="#">naissance par Region</a>
-
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -134,21 +120,7 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                               </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
@@ -169,11 +141,35 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DU contenu</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Statistiques sur Les Publications de mariages</h6>
                                 </div>
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime veritatis nihil sint excepturi quo dolorum. Ab architecto suscipit, fugit porro dolor debitis, magnam expedita corporis ratione vitae nihil consectetur cumque.
-                                 </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered"  width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-success">Statistiques sur le statut des mariages</th>
+                                                <th>Nombre Obtenu</th>
+        
+                                            </tr>
+                                        </thead>
+                                       
+                                        <tbody>
+                                            <% publication.forEach((elm , index)=>{ %>
+                                            <tr>
+                                                <td> <%= elm.libelle %></td>
+                                                <td> <%= elm.status %></td>
+                                            </tr>
+                                            <% }); %>
+                                        </tbody>
+                                    </table>
+ <div class="card-body">
+            <div class="chart-area">
+                <canvas id="statusPubPlot"></canvas>
+            </div>
+        </div>
+                                </div>
+                                </div>
                             </div>
 
                          
@@ -183,34 +179,40 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Du contenu</h6>
+                                    <h6 class="m-0 font-weight-bold text-success">Statistiques sur le statut de la digitalisation de l'acte de mariages</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
-                                    </div>
-                                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis quos suscipit adipisci optio id minus ex, odio alias eligendi obcaecati ab illo. Perferendis, illo esse. Iure consectetur aperiam aut et!
-                                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia expedita at sint facilis voluptatum minus, iste quod quae accusamus asperiores dolorem nisi placeat rem recusandae perspiciatis excepturi adipisci. Iste, enim?
+
+                         <div class="table-responsive">
+                            <table class="table table-bordered"  width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-success">Nom du  Status</th>
+                                        <th>Nombre Obtenu</th>
+
+                                    </tr>
+                                </thead>
+                               
+                                <tbody>
+                                    <% result.forEach((elm , index)=>{ %>
+                                    <tr>
+                                        <td> <%= elm.libelle %></td>
+                                        <td> <%= elm.status %></td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="statusPlot"></canvas>
+                                </div>
+                            </div>
                                 </div>
                             </div>
 
                             <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Statistiques sur les actes générés</h6>
-                                </div>
-
-                                <div class="card-body">
-                                    
-
-                              <div>
-                                    <%- status %>
-                           
-                              </div>
-                                </div>
-                            </div>
-
+                          
                         </div>
                     </div>
 
@@ -221,6 +223,9 @@
             <script>
                    let elements = <%- JSON.stringify(labels) %> ;
                     let value = <%- JSON.stringify(data) %> ;
+                    let state =  <%- JSON.stringify(state) %> ;
+                    let libelle =  <%- JSON.stringify(libelle) %> ;
+                    let declaration =  <%- JSON.stringify(publication) %> ;
             </script>
 
             <%- include ('./layourts/footer') -%>

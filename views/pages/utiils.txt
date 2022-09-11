@@ -1,0 +1,25 @@
+  <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Statistiques sur les actes générés</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    
+
+                              <div>
+                                <form action="/" method="post">
+                                    <select name="status" id="status">
+                                        </option>
+                                        <% status.forEach((elm , index)=>{ %>
+        
+                                            <option value=<%= index  %> name =<%= index  %>> <%= elm.libelle  %></option>
+                                            <% }); %>
+                                      </div>
+                                    </select>
+                                    <button class="btn-primary" type="submit"> envoyer</button>
+
+                                </form>
+
+                                
+                                </div>
+                            </div>
