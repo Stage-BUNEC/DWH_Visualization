@@ -1,6 +1,6 @@
 let connection = require('../config/db');
 
-class MariageController {
+class MariageService {
 
 //permet de compter d avoir la nationnalite  de epoux et epouse
      static getNumberMariage (callback)  {
@@ -11,14 +11,6 @@ class MariageController {
       })
    } 
    
-  static getMariageStatutd() {
-      let result = connection.promise().query("select libelle , count(libelle) as status from dim_status  as S "
-         + "inner join dim_mariages as M "
-         + "on M.state = S.state "
-         + " group by libelle ",
-      )
-      return result ;
-   }
    static getAllStatus(callback) {
       connection.query("SELECT state , libelle FROM dim_status", (error, result) => {
          if (error) throw error;
@@ -62,5 +54,21 @@ class MariageController {
          })
    }
 
+   //statistiques sur les nombres d epoux et epouse n'ayants pas de profession
+static  getAllProfession(callback){
+   connection.query("select profession_epoux , profession_epouse  , count(profession_epoux) as NombreProfEpoux , count(profession_epouse) as NombreProfEpouse "
+   +" from dim_mariages"
+   +" group by profession_epoux , profession_epouse ", (error, result) => {
+      if (error) throw error;
+      callback(result)
+   })
 }
-module.exports = MariageController
+
+ static async getNombreDeclarationEnregistrement() {
+   let nbMa = await connection.promise().query("SELECT count(id) as nombre_ma FROM dim_mariages") ;
+  // console.log(nbMa[0][0].nombre_ma);
+   let nbDec = await connection.promise().query("SELECT count(num_dec) as nombre_dec FROM dim_publications") ;
+  return {"nbMariage" : nbMa[0][0].nombre_ma , "nbDec" : nbDec[0][0].nombre_dec }
+}
+}
+module.exports = MariageService
