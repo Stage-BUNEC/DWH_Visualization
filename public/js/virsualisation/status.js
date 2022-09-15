@@ -7,13 +7,13 @@ Chart.defaults.global.defaultFontColor = '#858796';
 // on  visualise les statistiques sur le statut des mariages et des publications
 function visualise(id , dataV , libelleV){    
     return  new Chart(id, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: libelleV,
         datasets: [{
           label: "Nombre =",
           lineTension: 0.3,
-          backgroundColor: "rgba(78, 115, 223, 0.05)",
+          backgroundColor: "#1cc88a",
           borderColor: "rgba(78, 115, 223, 1)",
           pointRadius: 3,
           pointBackgroundColor: "rgba(78, 115, 223, 1)",
