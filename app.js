@@ -7,6 +7,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 let mariageRoute = require("./routes/mariageRoute");
+let naissanceRoute = require("./routes/naissanceRoute")
 
 
 app.post("/", (req, res) => {
@@ -19,6 +20,7 @@ app.post("/", (req, res) => {
 })
 
 app.use("/" ,mariageRoute)
+app.use("/" ,naissanceRoute)
 
 app.listen(3000, () => {
     console.log("le serveur est demaré au port 3000");

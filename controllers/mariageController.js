@@ -53,13 +53,14 @@ const mariageInfo = async (req, res) => {
         "publication":pub , 
         "profession"  : profession,
         "stat":stat,
-        "nationalite":nationalite
+        "nationalite":nationalite,
+        "entity_name":"Tableau de mariage"
     })
 }
 const getPublicationTable = (req, res) => {
     let data = [];
     PublicationService.getPublicationTable((result) => {
-        res.render("pages/mariage/publication", { "data": result, })
+        res.render("pages/mariage/publication", { "data": result,"entity_name":"Tableau de mariage" })
     })
 
 }
@@ -67,7 +68,7 @@ const getPublicationTable = (req, res) => {
 const getMariageTable = (req, res) => {
     let data = [];
     PublicationService.getMariageTable((result) => {
-        res.render("pages/mariage/mariageTable", { "data": result, })
+        res.render("pages/mariage/mariageTable", { "data": result,"entity_name":"Tableau de mariage" })
     })
 
 }
