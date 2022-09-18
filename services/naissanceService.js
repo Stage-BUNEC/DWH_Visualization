@@ -8,6 +8,15 @@ class NaissanceService {
          callback(result)
       })
    }
+
+   static async getProfessionPere(callback) {
+      connection.query("SELECT profession_pere FROM dim_naisssance ", (error, result) => {
+         if (error) throw error;
+         callback(result)
+      })
+   }
+   
+
 // permet d avoir la proportion des sexes declarees
 static async getSexeProportion(callback) {
    connection.query("select sexe  , count(sexe) as Nombre from dim_naisssance "+

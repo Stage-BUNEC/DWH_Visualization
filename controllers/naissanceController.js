@@ -2,7 +2,7 @@ let NaissanceService = require("../services/naissanceService");
 
 
 const getStatistique = async (req, res) => {
-        let sexe = [] , Nb_dec , Nb_arch , sexePorption = [];
+        let sexe = [] , Nb_dec , Nb_arch , sexePorption = [] , pere_travail = 0 , pere_sans_travail =0;
         await NaissanceService.getNumberNai((result) => {
                 sexe = result;
         })
@@ -23,15 +23,27 @@ const getStatistique = async (req, res) => {
                 });
         })
 
+        await NaissanceService.getProfessionPere((result) => {
+              result.forEach((elm) => {
+                console.log(elm)
+                if(elm.profession_pere ==="") pere_sans_travail +=1 ;
+                else{
+                        pere_travail +=1; 
+                }
+              })
+        })
+
         let data = await NaissanceService.getInfo()
-        console.log(sexePorption);
+        console.log("nb per_san"+pere_sans_travail ,"per_avec" + pere_travail);
         res.render("pages/naissance/naissance_gene", {
                 "data": data[0],
                 "entity_name": "Tableau d 'acte de naissance génére",
                 "Nombre_sexe" : sexe,
                 "nombre_dec" : Nb_dec[0].Nombre,
                 "archive" : Nb_arch[0].Nombre ,
-                "sexePorption" : sexePorption
+                "sexePorption" : sexePorption ,
+                "pere_s_p" : pere_sans_travail,
+                "pere_a_p" : pere_travail
         })
 }
 
