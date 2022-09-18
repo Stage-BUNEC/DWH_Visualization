@@ -1,3 +1,4 @@
+
 const getArrondissenementCodeOfMariage = (num_dec)=>{
     let code_arrondissement = '';
     for (let i = 0; i < 5; i++) {

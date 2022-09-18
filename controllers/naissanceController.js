@@ -2,7 +2,7 @@ let NaissanceService = require("../services/naissanceService");
 
 
 const getStatistique = async (req, res) => {
-        let sexe = [] , Nb_dec , Nb_arch , sexePorption = [] , pere_travail = 0 ,  hors_mariage=0 ,pere_sans_travail =0;
+        let sexe = [] , Nb_dec , Nb_arch , sexePorption = [] , pere_travail = 0 ,  hors_mariage=0 ,pere_sans_travail =0 , date_mjr;
         await NaissanceService.getNumberNai((result) => {
                 sexe = result;
         })
@@ -35,7 +35,7 @@ const getStatistique = async (req, res) => {
         let cel =0;
         await NaissanceService.getStatutMatrimoniale((result) => {
                 result.forEach((elm) => {
-                  console.log(elm)
+                 // console.log(elm)
                   if(elm.situation_matrimoniale_mere ===null) hors_mariage +=1 ;
                   else {
                         cel += 1 ; 
@@ -43,7 +43,10 @@ const getStatistique = async (req, res) => {
                 })
           })
 
-
+    NaissanceService.getTimeLoadingEtl((resultat )=>{
+        date_mjr = new Date(resultat[0].date_ajout);
+   })
+    
 
         let data = await NaissanceService.getInfo()
        // console.log("nb per_san"+pere_sans_travail ,"per_avec" + pere_travail);
@@ -56,7 +59,9 @@ const getStatistique = async (req, res) => {
                 "sexePorption" : sexePorption ,
                 "pere_s_p" : pere_sans_travail,
                 "pere_a_p" : pere_travail,
-                "hors_mariage":"cette colonne est null dans la table"
+                "hors_mariage":"cette colonne est null dans la table" , 
+                "date" : date_mjr.toLocaleDateString(),
+                "heure" : date_mjr.toLocaleTimeString()
         })
 }
 

@@ -22,6 +22,15 @@ class NaissanceService {
          callback(result)
       })
    }
+     // avoir la date de chargement dans l'entrepot
+    static async getTimeLoadingEtl(callback) {
+      connection.query("SELECT date_ajout FROM dim_naisssance"
+      +" limit 1  ", (error, result) => {
+         if (error) throw error;
+         callback(result)
+      })
+   }
+   
    
    
 

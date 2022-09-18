@@ -1,11 +1,12 @@
 let MariageService = require("../services/mariageService")
 let PublicationService = require("../services/publicationService")
+let NaissanceService = require("../services/naissanceService")
 
 const mariageInfo = async (req, res) => {
     const labels = [];
     const data = [];
-    let profession = [] , nationalite =[] ;
-    const libelle = [] , state = [] , resultS = []  , status = [] , pub = [];
+    let profession = [] , nationalite =[] , date_ajout;
+    const libelle = [] , state = [] , resultS = []  , status = [] , pub = [] ;
 
     await MariageService.getNumberMariage((result) => {
         result.forEach(elm => {
@@ -32,6 +33,10 @@ const mariageInfo = async (req, res) => {
             resultS.push(elm)
         });
     })
+    await NaissanceService.getTimeLoadingEtl((resultat) =>{
+        date_mjr = new Date(resultat[0].date_ajout);
+    })
+    
     await MariageService.getPublicationStatut((result) => {
         result.forEach(elm => {
             pub.push(elm);
@@ -54,7 +59,9 @@ const mariageInfo = async (req, res) => {
         "profession"  : profession,
         "stat":stat,
         "nationalite":nationalite,
-        "entity_name":"Tableau de mariage"
+        "entity_name":"Tableau de mariage" ,
+        "date" : date_mjr.toLocaleDateString(),
+        "heure" : date_mjr.toLocaleTimeString() 
     })
 }
 const getPublicationTable = (req, res) => {
