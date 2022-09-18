@@ -15,6 +15,14 @@ class NaissanceService {
          callback(result)
       })
    }
+   //permet d avoir le statut matrimoniale des la mere pour avoir le nombre d enfant hors mariage
+   static async getStatutMatrimoniale(callback) {
+      connection.query("SELECT situation_matrimoniale_mere FROM dim_naisssance ", (error, result) => {
+         if (error) throw error;
+         callback(result)
+      })
+   }
+   
    
 
 // permet d avoir la proportion des sexes declarees
