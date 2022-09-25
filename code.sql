@@ -74,3 +74,6 @@ group by sexe ;
 	on dim_naisssance.state = 10 and dim_status.state  = 10 ;
 
 select count(id_naiss) as Nombre from dim_dec_naissance ;
+
+SELECT origine_dec , count(origine_dec) as nombre FROM dim_dec_naissance
+where origine_dec = 1;

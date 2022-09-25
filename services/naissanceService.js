@@ -50,6 +50,16 @@ static async getSexeProportion(callback) {
          callback(result)
       })
    }
+//permet d'avoir le nombre de  declaration provenant des Fosa
+
+   static async getNumberDecFosa(callback) {
+      connection.query("SELECT origine_dec , count(origine_dec) as nombre FROM dim_dec_naissance "+
+     " where origine_dec = 1 ", (error, result) => {
+         if (error) throw error;
+         callback(result)
+      })
+   }
+
 //permet d avoir le nombre d acte genere et archive au BUNEC siege
    static async getNumberArchiveSiege(callback) {
       connection.query("select  count(id_naiss) as Nombre from dim_naisssance " +
@@ -72,6 +82,8 @@ static async getSexeProportion(callback) {
 
       return resultInfo;
    }
+
+
 
 }
 module.exports = NaissanceService;

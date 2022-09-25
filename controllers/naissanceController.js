@@ -2,7 +2,7 @@ let NaissanceService = require("../services/naissanceService");
 
 
 const getStatistique = async (req, res) => {
-        let sexe = [] , Nb_dec , Nb_arch , sexePorption = [] , pere_travail = 0 ,  hors_mariage=0 ,pere_sans_travail =0 , date_mjr;
+        let sexe = [] , Nb_dec , Nb_arch ,fosa = 0, sexePorption = [] , pere_travail = 0 ,  hors_mariage=0 ,pere_sans_travail =0 , date_mjr;
         await NaissanceService.getNumberNai((result) => {
                 sexe = result;
         })
@@ -43,6 +43,12 @@ const getStatistique = async (req, res) => {
                 })
           })
 
+          NaissanceService.getNumberDecFosa((result)=>{
+                 if (result.length == 1) {
+                        fosa = result[0].nombre
+                 }
+           })
+
     NaissanceService.getTimeLoadingEtl((resultat )=>{
         date_mjr = new Date(resultat[0].date_ajout);
    })
@@ -61,10 +67,15 @@ const getStatistique = async (req, res) => {
                 "pere_a_p" : pere_travail,
                 "hors_mariage":"cette colonne est null dans la table" , 
                 "date" : date_mjr.toLocaleDateString(),
-                "heure" : date_mjr.toLocaleTimeString()
+                "heure" : date_mjr.toLocaleTimeString(),
+                "fosa" : fosa
         })
 }
 
+const decNaissance = ((req, res)=>{
+        res.render("pages/naissance/declaration")
+})
 module.exports = {
-        getStatistique
+        getStatistique,
+        decNaissance
 }
