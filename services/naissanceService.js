@@ -4,28 +4,40 @@ class NaissanceService {
    
 // permet d avoir le nombre de naissance genere
    static async getNumberNai(callback) {
-      connection.query("select count(id_naiss) as Nombre  from dim_naisssance ", (error, result) => {
+      connection.query("select count(id_naiss) as Nombre  from dim_naissance ", (error, result) => {
          if (error) throw error;
          callback(result)
       })
    }
 
    static async getProfessionPere(callback) {
-      connection.query("SELECT profession_pere FROM dim_naisssance ", (error, result) => {
+      connection.query("SELECT profession_pere FROM dim_naissance ", (error, result) => {
          if (error) throw error;
          callback(result)
       })
    }
    //permet d avoir le statut matrimoniale des la mere pour avoir le nombre d enfant hors mariage
    static async getStatutMatrimoniale(callback) {
-      connection.query("SELECT situation_matrimoniale_mere FROM dim_naisssance ", (error, result) => {
+      connection.query("SELECT situation_matrimoniale_mere , count(situation_matrimoniale_mere) as nombre FROM dim_dec_naissance " +
+     " where situation_matrimoniale_mere ='CELIBATAIRE' " +
+     " group by situation_matrimoniale_mere ", (error, result) => {
          if (error) throw error;
          callback(result)
       })
    }
+   //permet de representer le graphe montrant le statut matrimoniale de la mere
+   static async plotStatusMatrimonial(callback) {
+      connection.query("SELECT situation_matrimoniale_mere , count(situation_matrimoniale_mere) as nombre FROM dim_dec_naissance "
+    + " group by situation_matrimoniale_mere", (error, result) => {
+         if (error) throw error;
+         callback(result)
+      })
+   }
+
+
      // avoir la date de chargement dans l'entrepot
     static async getTimeLoadingEtl(callback) {
-      connection.query("SELECT date_ajout FROM dim_naisssance"
+      connection.query("SELECT date_ajout FROM dim_naissance"
       +" limit 1  ", (error, result) => {
          if (error) throw error;
          callback(result)
@@ -37,7 +49,7 @@ class NaissanceService {
 
 // permet d avoir la proportion des sexes declarees
 static async getSexeProportion(callback) {
-   connection.query("select sexe  , count(sexe) as Nombre from dim_naisssance "+
+   connection.query("select sexe  , count(sexe) as Nombre from dim_naissance "+
     " group by sexe ; ", (error, result) => {
       if (error) throw error;
       callback(result)
@@ -63,9 +75,17 @@ static async getSexeProportion(callback) {
 
 //permet d avoir le nombre d acte genere et archive au BUNEC siege
    static async getNumberArchiveSiege(callback) {
-      connection.query("select  count(id_naiss) as Nombre from dim_naisssance " +
-         " inner join  dim_status " +
-         "on dim_naisssance.state = 10 and dim_status.state  = 10 ; ", (error, result) => {
+      connection.query("select  count(id_naiss) as Nombre from dim_naissance " +
+         " where dim_naissance.libelle = 'Archivé au Siège' ; ", (error, result) => {
+            if (error) throw error;
+            callback(result)
+         })
+   }
+
+   //permet d avoir le statut des actes générés
+   static async getStatusGenere(callback) {
+      connection.query("select libelle  , count(libelle) as nombre from dim_naissance "
+    +" group by libelle ", (error, result) => {
             if (error) throw error;
             callback(result)
          })
@@ -77,8 +97,7 @@ static async getSexeProportion(callback) {
          " inner join dim_departement as D on D.code_region = R.code_region " +
          " inner join dim_arrondissement as A on A.code_departement = D.code_departement " +
          " inner join  dim_cec_principale as C on C.code_arrondissement = A.code_arrondissement " +
-         " inner join dim_naisssance as M on M.centre_etat = C.immatriculation " +
-         " inner join dim_status as S on S.state = M.state " +
+         " inner join dim_naissance as M on M.centre_etat = C.immatriculation " +
          " group by libelle  , sexe ");
 
       return resultInfo;

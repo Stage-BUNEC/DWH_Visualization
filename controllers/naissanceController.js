@@ -2,7 +2,7 @@ let NaissanceService = require("../services/naissanceService");
 
 
 const getStatistique = async (req, res) => {
-        let sexe = [], Nb_dec, Nb_arch, fosa, sexePorption = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr;
+        let sexe = [], Nb_dec, Nb_arch, fosa, sexePorption = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr ,plotMartri ,statutGenere;
         await NaissanceService.getNumberNai((result) => {
                 sexe = result;
         })
@@ -43,18 +43,31 @@ const getStatistique = async (req, res) => {
                 })
         })
 
-        NaissanceService.getNumberDecFosa((result) => {
+       await NaissanceService.getNumberDecFosa((result) => {
                 if (result.length == 1) {
                         fosa = result[0].nombre
                 }
         })
+       await NaissanceService.getStatutMatrimoniale((result)=>{
+               // console.log(result)
+                hors_mariage = result[0].nombre
+        })
+
+      await  NaissanceService.plotStatusMatrimonial((result)=>{
+               // console.log(result)
+                plotMartri = result
+        })
 
         await NaissanceService.getNumCEC();
 
-        NaissanceService.getTimeLoadingEtl((resultat) => {
+      await  NaissanceService.getTimeLoadingEtl((resultat) => {
                 date_mjr = new Date(resultat[0].date_ajout);
         })
-
+       
+        await NaissanceService.getStatusGenere((resultat)=>{
+               // console.log(resultat)
+                statutGenere = resultat
+        })
 
         let data = await NaissanceService.getInfo()
         // console.log("nb per_san"+pere_sans_travail ,"per_avec" + pere_travail);
@@ -67,10 +80,12 @@ const getStatistique = async (req, res) => {
                 "sexePorption": sexePorption,
                 "pere_s_p": pere_sans_travail,
                 "pere_a_p": pere_travail,
-                "hors_mariage": "cette colonne est null dans la table",
+                "hors_mariage": hors_mariage,
                 "date": date_mjr.toLocaleDateString(),
                 "heure": date_mjr.toLocaleTimeString(),
-                "fosa": fosa
+                "fosa": fosa ,
+                "plotMatri" : plotMartri,
+                "statutGenere":statutGenere
         })
 }
 
