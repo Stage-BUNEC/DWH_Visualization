@@ -1,6 +1,7 @@
 let connection = require('../config/db');
 
 class NaissanceService {
+   
 // permet d avoir le nombre de naissance genere
    static async getNumberNai(callback) {
       connection.query("select count(id_naiss) as Nombre  from dim_naisssance ", (error, result) => {
@@ -83,7 +84,25 @@ static async getSexeProportion(callback) {
       return resultInfo;
    }
 
-
+//permet d avoir tous les codes des CEC
+static async getNumCEC() {
+   let immatriculation= [] ;
+   connection.query("SELECT immatriculation FROM dim_cec_secondaire;", (error, result) => {
+         if (error) throw error;
+         result.forEach((elm)=>{
+            immatriculation.push(elm.immatriculation)
+         })
+      })
+      connection.query("SELECT immatriculation FROM dim_cec_principale;", (error, result) => {
+         if (error) throw error;
+         result.forEach((elm)=>{
+            if ( elm.immatriculation != "" ) {
+               immatriculation.push(elm.immatriculation)
+            }
+         })
+      })
+      console.log(immatriculation)
+}
 
 }
 module.exports = NaissanceService;
