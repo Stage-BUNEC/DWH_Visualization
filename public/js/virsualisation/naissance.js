@@ -110,14 +110,29 @@ let sexeVis = visualise(sexePlot , data_sexe , label_sexe);
 
 let matriPlot = document.getElementById("matriProportion")
 
-//visualiser la proportion des sexes
+
 const data_matri = [] , label_matri = [] ;
 
-data_label_matrimoniale.forEach((element) =>{
+sexeP.forEach((element) =>{
   data_matri.push(element.nombre);
   label_matri.push(element.situation_matrimoniale_mere)
 })
-console.log(data_matri)
-console.log(label_matri)
 
-let matriVis = visualise(matriPlot , data_matri , label_matri);
+let matriVis = visualise(matriPlot , data_sexe , label_matri);
+
+// Visualise statut acte
+
+
+let statusPlot = document.getElementById("statusProportion")
+
+
+const data_ma = [] , label_m = [] ;
+
+data_label_status.forEach((element) =>{
+  data_ma.push(element.Nombre);
+  label_m.push(element.libelle)
+})
+console.log(data_label_status)
+console.log(label_m)
+
+let statut = visualise(statusPlot , data_ma , label_m);

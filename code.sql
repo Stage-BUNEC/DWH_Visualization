@@ -82,3 +82,8 @@ where origine_dec = 1;
 SELECT situation_matrimoniale_mere , count(situation_matrimoniale_mere) as nombre FROM dim_dec_naissance
 where situation_matrimoniale_mere ="CELIBATAIRE"
 group by situation_matrimoniale_mere
+
+
+select libelle  , count(libelle) as nombre from dim_naissance
+group by libelle
+

@@ -264,9 +264,10 @@
                                     </div>
                                    
                                     <!-- Pie Chart -->
-                                    <div class="card-body">
-                                        <div class="chart-pie pt-4 pb-2">
-                                              <!--   <canvas id="sexePorportion"></canvas> -->
+                                    <div class="card-body shadow">
+                                      <div>  <p class="text-success">Proportion Des Differents status</p></div>
+                                        <div class="chart-bar pt-4 pb-2">
+                                                 <canvas id="statusProportion"></canvas>
                                           
                                         </div>
                                        
@@ -339,5 +340,7 @@
             <script>
                  let sexeP = <%- JSON.stringify(sexePorption) %> ;
                  let data_label_matrimoniale =  <%- JSON.stringify(plotMatri) %> ;
+                 let data_label_status =  <%- JSON.stringify(statutGenere) %> ;
+        
             </script>
             <%- include ('../layourts/footer') -%>

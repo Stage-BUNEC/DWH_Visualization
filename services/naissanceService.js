@@ -84,7 +84,7 @@ static async getSexeProportion(callback) {
 
    //permet d avoir le statut des actes générés
    static async getStatusGenere(callback) {
-      connection.query("select libelle  , count(libelle) as nombre from dim_naissance "
+      connection.query("select libelle  , count(libelle) as Nombre from dim_naissance "
     +" group by libelle ", (error, result) => {
             if (error) throw error;
             callback(result)
