@@ -77,3 +77,8 @@ select count(id_naiss) as Nombre from dim_dec_naissance ;
 
 SELECT origine_dec , count(origine_dec) as nombre FROM dim_dec_naissance
 where origine_dec = 1;
+
+
+SELECT situation_matrimoniale_mere , count(situation_matrimoniale_mere) as nombre FROM dim_dec_naissance
+where situation_matrimoniale_mere ="CELIBATAIRE"
+group by situation_matrimoniale_mere

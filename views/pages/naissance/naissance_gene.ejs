@@ -291,10 +291,53 @@
                     </div>
                 </div>
 
+
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-success">Statistiques la situation matrimoniale de la mère</h6>
+                        </div>
+                        <div class="card-body">
+
+                 <div class="table-responsive">
+                    <table class="table table-bordered"  width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-success">Nom du  Status</th>
+                                <th>Nombre Obtenu</th>
+
+                            </tr>
+                        </thead>
+                       
+                        <tbody>
+                            <% plotMatri.forEach((elm , index)=>{ %>
+                            <tr>
+                                <td> <%= elm.situation_matrimoniale_mere %></td>
+                                <td> <%= elm.nombre %></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="matriProportion"></canvas>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                    <!-- Approach -->
+                  
+                </div>
+            </div>
+
+
                     </div>
 
                   
             <script>
                  let sexeP = <%- JSON.stringify(sexePorption) %> ;
+                 let data_label_matrimoniale =  <%- JSON.stringify(plotMatri) %> ;
             </script>
             <%- include ('../layourts/footer') -%>

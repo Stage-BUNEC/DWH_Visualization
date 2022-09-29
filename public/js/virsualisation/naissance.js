@@ -104,4 +104,20 @@ sexeP.forEach((element) =>{
 let sexeVis = visualise(sexePlot , data_sexe , label_sexe);
 
 
+// situation matrimoniale de la mere
 
+
+
+let matriPlot = document.getElementById("matriProportion")
+
+//visualiser la proportion des sexes
+const data_matri = [] , label_matri = [] ;
+
+data_label_matrimoniale.forEach((element) =>{
+  data_matri.push(element.nombre);
+  label_matri.push(element.situation_matrimoniale_mere)
+})
+console.log(data_matri)
+console.log(label_matri)
+
+let matriVis = visualise(matriPlot , data_matri , label_matri);
