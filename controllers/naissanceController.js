@@ -2,7 +2,7 @@ let NaissanceService = require("../services/naissanceService");
 
 
 const getStatistique = async (req, res) => {
-        let sexe = [], Nb_dec, Nb_arch, fosa, sexePorption = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr ,plotMartri ,statutGenere;
+        let sexe = [], datapro = [] ,Nb_dec, Nb_arch, fosa, sexePorption = [],sexePorptionGenere = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr ,plotMartri ,statutGenere;
         await NaissanceService.getNumberNai((result) => {
                 sexe = result;
         })
@@ -19,6 +19,16 @@ const getStatistique = async (req, res) => {
                                 sexePorption.push({ sexe: "Masculin", "Nombre": element.Nombre })
                         } else {
                                 sexePorption.push({ sexe: element.sexe, "Nombre": element.Nombre })
+                        }
+                });
+        })
+          
+        await NaissanceService.getSexeProportionGenere((result) => {
+                result.forEach(element => {
+                        if (element.sexe === "M") {
+                                sexePorptionGenere.push({ sexe: "Masculin", "Nombre": element.Nombre })
+                        } else {
+                                sexePorptionGenere.push({ sexe: element.sexe, "Nombre": element.Nombre })
                         }
                 });
         })
@@ -68,8 +78,13 @@ const getStatistique = async (req, res) => {
                // console.log(resultat)
                 statutGenere = resultat
         })
-
+        await NaissanceService.getInfoActeGenere((resultat)=>{
+                // console.log(resultat)
+                datapro = resultat
+         })
+ 
         let data = await NaissanceService.getInfo()
+       // let  datapro = await NaissanceService.getInfoActeGenere()
         // console.log("nb per_san"+pere_sans_travail ,"per_avec" + pere_travail);
         res.render("pages/naissance/naissance_gene", {
                 "data": data[0],
@@ -85,7 +100,9 @@ const getStatistique = async (req, res) => {
                 "heure": date_mjr.toLocaleTimeString(),
                 "fosa": fosa ,
                 "plotMatri" : plotMartri,
-                "statutGenere":statutGenere
+                "statutGenere":statutGenere,
+                "sexePorptionGenere": sexePorptionGenere,
+                "datapro" : datapro
         })
 }
 

@@ -113,12 +113,12 @@ let matriPlot = document.getElementById("matriProportion")
 
 const data_matri = [] , label_matri = [] ;
 
-sexeP.forEach((element) =>{
+data_label_matrimoniale.forEach((element) =>{
   data_matri.push(element.nombre);
   label_matri.push(element.situation_matrimoniale_mere)
 })
 
-let matriVis = visualise(matriPlot , data_sexe , label_matri);
+let matriVis = visualise(matriPlot , data_matri , label_matri);
 
 // Visualise statut acte
 
@@ -130,7 +130,7 @@ const data_ma = [] , label_m = [] ;
 
 data_label_status.forEach((element) =>{
   data_ma.push(element.Nombre);
-  label_m.push(element.libelle)
+  label_m.push(element.sexe)
 })
 console.log(data_label_status)
 console.log(label_m)

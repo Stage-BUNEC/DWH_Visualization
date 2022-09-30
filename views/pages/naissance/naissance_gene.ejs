@@ -147,7 +147,7 @@
 
                         <!-- Content Row -->
                         <div class="row">
-                            <button class="btn-primary btn-show" onclick="toggleEl()">Ouvrir la table</button>
+                            <button class="btn-primary btn-show" onclick="toggleEl()">Ouvrir la table des statistiques</button>
 
                             <div class="card shadow mb-4" id="show-table">
                                 <div class="card-body">
@@ -164,7 +164,9 @@
                                                     <th class="text-success">Nombre</th>
                                                 </tr>
                                             </thead>
-
+                                            <div>
+                                                <p class="text-primary" style="font-size: 25px; text-align: center;"> Table des actes avec les statuts</p>
+                                            </div>
                                             <tbody>
 
                                                 <% data.forEach((elm)=>{ %>
@@ -196,6 +198,51 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-success">Region</th>
+                                                <th class="text-success">Departement </th>
+                                                <th class="text-success">Arrondissement</th>
+                                                <th class="text-success">Nom CEC</th>
+                                                <th class="text-success">Statut de L'acte</th>
+                                                <th class="text-success">Sexe</th>
+                                                <th class="text-success">Nombre</th>
+                                            </tr>
+                                        </thead>
+<div>
+    <p class="text-primary" style="font-size: 25px; text-align: center;"> Table des actes générés uniquement</p>
+</div>
+                                        <tbody>
+
+                                            <% datapro.forEach((elm)=>{ %>
+
+                                                <tr>
+                                                    <td>
+                                                        <%= elm.libelle_region %>
+                                                    </td>
+                                                    <td>
+                                                        <%= elm.libelle_departement %>
+                                                    </td>
+                                                    <td>
+                                                        <%= elm.libelle_arrondissement %>
+                                                    </td>
+                                                    <td>
+                                                        <%= elm.nomcec %>
+                                                    </td>
+                                                    <td>
+                                                        <%= elm.libelle %>
+                                                    </td>
+                                                    <td>
+                                                        <%= elm.sexe %>
+                                                    </td>
+                                                    <td>
+                                                        <%= elm.Nombre %>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +290,7 @@
                                                     <table class="table table-bordered"  width="100%" cellspacing="0">
                                                         <thead>
                                                             <tr>
-                                                                <th class="text-success">Proportion en sexe génerée</th>
+                                                                <th class="text-success">Statistiques  des actes déclarés</th>
                                                                 <th>Nombre</th>
                         
                                                             </tr>
@@ -264,8 +311,28 @@
                                     </div>
                                    
                                     <!-- Pie Chart -->
+                                  
                                     <div class="card-body shadow">
-                                      <div>  <p class="text-success">Proportion Des Differents status</p></div>
+                                        
+                                        <table class="table table-bordered"  width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-success">Statistiques sur sexe des actes généres</th>
+                                                    <th>Nombre</th>
+            
+                                                </tr>
+                                            </thead>
+                                           
+                                            <tbody>
+                                                <% sexePorptionGenere.forEach((elm , index)=>{ %>
+                                                <tr>
+                                                    <td> <%= elm.sexe %></td>
+                                                    <td> <%= elm.Nombre %></td>
+                                                </tr>
+                                                <% }); %>
+                                            </tbody>
+                                        </table>   
+                                      <div>  <p class="text-success">Proportion en sexe des actes généres</p></div>
                                         <div class="chart-bar pt-4 pb-2">
                                                  <canvas id="statusProportion"></canvas>
                                           
@@ -282,7 +349,7 @@
 
                         <!-- Card Body -->
                         <div class="card-body">
-                           
+                            <div>  <p class="text-success" style="font-weight: bold;">Proportion en sexe des actes declarés</p></div>
                         <div class="card-body">
                             <div class="chart-pie pt-4 pb-2">
                                 <canvas id="sexePorportion"></canvas>
@@ -340,7 +407,7 @@
             <script>
                  let sexeP = <%- JSON.stringify(sexePorption) %> ;
                  let data_label_matrimoniale =  <%- JSON.stringify(plotMatri) %> ;
-                 let data_label_status =  <%- JSON.stringify(statutGenere) %> ;
+                 let data_label_status =  <%- JSON.stringify(sexePorptionGenere) %> ;
         
             </script>
             <%- include ('../layourts/footer') -%>
