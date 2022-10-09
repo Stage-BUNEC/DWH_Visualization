@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 let mariageRoute = require("./routes/mariageRoute");
 let naissanceRoute = require("./routes/naissanceRoute")
-
+let decesRoute = require("./routes/decesRoute")
 
 app.post("/", (req, res) => {
     let id = req.body.status;
@@ -21,6 +21,7 @@ app.post("/", (req, res) => {
 
 app.use("/" ,mariageRoute)
 app.use("/" ,naissanceRoute)
+app.use("/" ,decesRoute )
 
 app.listen(3000, () => {
     console.log("le serveur est demaré au port 3000");

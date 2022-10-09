@@ -65,7 +65,7 @@ static  getAllProfession(callback){
 }
 
  static async getNombreDeclarationEnregistrement() {
-   let nbMa = await connection.promise().query("SELECT count(id) as nombre_ma FROM dim_mariages") ;
+   let nbMa = await connection.promise().query("SELECT count(id) as nombre_ma FROM dim_mariages  where dim_mariages.state  = 9") ;
   // console.log(nbMa[0][0].nombre_ma);
    let nbDec = await connection.promise().query("SELECT count(num_dec) as nombre_dec FROM dim_publications") ;
   return {"nbMariage" : nbMa[0][0].nombre_ma , "nbDec" : nbDec[0][0].nombre_dec }

@@ -5,8 +5,8 @@
 
             <div id="content">
 
-                <%- include ('../layourts/topbar', date , heure) -%>
-                    <!-- Begin Page Content -->
+               
+                     <%- include ('../layourts/topbar2') -%>
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
@@ -25,7 +25,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     Nombre d'acte généré </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= Nombre_sexe[0].Nombre %> </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                             </div>
                                            
                                         </div>
@@ -39,8 +39,8 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Nombre de déclaration de naissance total</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> <%= nombre_dec%></div>
+                                                    Nombre de déclaration de deces total</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">  <%= nbdeces %> </div>
                                             </div>
 
                                         </div>
@@ -55,7 +55,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     LE NOMBRE D’ENFANT HORS MARIAGE </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= hors_mariage %> </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">0 </div>
                                             </div>
                                            
                                         </div>
@@ -68,7 +68,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     Nombre d'acte archivé au Siege BUNEC</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> <%= archive %>  </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">0  </div>
                                             </div>
                                            
                                         </div>
@@ -85,7 +85,7 @@
                                                 </div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%=pere_s_p %>
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0
                                                         </div>
                                                     </div>
 
@@ -106,7 +106,7 @@
                                                 </div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%=pere_a_p %>
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0
                                                         </div>
                                                     </div>
 
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%=fosa %>
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0
                                                         </div>
                                                     </div>
 
@@ -169,33 +169,7 @@
                                             </div>
                                             <tbody>
 
-                                                <% data.forEach((elm)=>{ %>
-
-                                                    <tr>
-                                                        <td>
-                                                            <%= elm.libelle_region %>
-                                                        </td>
-                                                        <td>
-                                                            <%= elm.libelle_departement %>
-                                                        </td>
-                                                        <td>
-                                                            <%= elm.libelle_arrondissement %>
-                                                        </td>
-                                                        <td>
-                                                            <%= elm.nomcec %>
-                                                        </td>
-                                                        <td>
-                                                            <%= elm.libelle %>
-                                                        </td>
-                                                        <td>
-                                                            <%= elm.sexe %>
-                                                        </td>
-                                                        <td>
-                                                            <%= elm.Nombre %>
-                                                        </td>
-                                                    </tr>
-                                                    <% }); %>
-                                            </tbody>
+                                                                                            </tbody>
                                         </table>
                                     </div>
                                     <table class="table table-bordered" width="100%" cellspacing="0">
@@ -215,69 +189,13 @@
 </div>
                                         <tbody>
 
-                                            <% datapro.forEach((elm)=>{ %>
-
-                                                <tr>
-                                                    <td>
-                                                        <%= elm.libelle_region %>
-                                                    </td>
-                                                    <td>
-                                                        <%= elm.libelle_departement %>
-                                                    </td>
-                                                    <td>
-                                                        <%= elm.libelle_arrondissement %>
-                                                    </td>
-                                                    <td>
-                                                        <%= elm.nomcec %>
-                                                    </td>
-                                                    <td>
-                                                        <%= elm.libelle %>
-                                                    </td>
-                                                    <td>
-                                                        <%= elm.sexe %>
-                                                    </td>
-                                                    <td>
-                                                        <%= elm.Nombre %>
-                                                    </td>
-                                                </tr>
-                                                <% }); %>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
-
-
-                        <% datapro.forEach((elm)=>{ %>
-                            <button class="deroule">
-                                <%= elm.libelle_region %>
-                            </button>
-                            <div class="panel">
-
-                                <div class="row">
-                                    <p>
-                                        <%= elm.libelle_departement %>
-                                    </p>
-                                    <p>
-                                        <%= elm.libelle_arrondissement %>
-                                    </p>
-                                    <p>
-                                        <%= elm.nomcec %>
-                                    </p>
-                                    <p class="text-success">
-                                        <%= elm.libelle %>
-                                    </p>
-                                    <p>
-                                        <%= elm.sexe %>
-                                    </p>
-                                    <p>
-                                        <%= elm.Nombre %>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <% }); %>
 
 
                                 <div class="row">
@@ -297,12 +215,6 @@
                                                         </thead>
                                                        
                                                         <tbody>
-                                                            <% sexePorption.forEach((elm , index)=>{ %>
-                                                            <tr>
-                                                                <td> <%= elm.sexe %></td>
-                                                                <td> <%= elm.Nombre %></td>
-                                                            </tr>
-                                                            <% }); %>
                                                         </tbody>
                                                     </table>
             
@@ -324,12 +236,6 @@
                                             </thead>
                                            
                                             <tbody>
-                                                <% sexePorptionGenere.forEach((elm , index)=>{ %>
-                                                <tr>
-                                                    <td> <%= elm.sexe %></td>
-                                                    <td> <%= elm.Nombre %></td>
-                                                </tr>
-                                                <% }); %>
                                             </tbody>
                                         </table>   
                                       <div>  <p class="text-success">Proportion en sexe des actes généres</p></div>
@@ -378,12 +284,6 @@
                         </thead>
                        
                         <tbody>
-                            <% plotMatri.forEach((elm , index)=>{ %>
-                            <tr>
-                                <td> <%= elm.situation_matrimoniale_mere %></td>
-                                <td> <%= elm.nombre %></td>
-                            </tr>
-                            <% }); %>
                         </tbody>
                     </table>
 
@@ -403,11 +303,5 @@
 
                     </div>
 
-                  
-            <script>
-                 let sexeP = <%- JSON.stringify(sexePorption) %> ;
-                 let data_label_matrimoniale =  <%- JSON.stringify(plotMatri) %> ;
-                 let data_label_status =  <%- JSON.stringify(sexePorptionGenere) %> ;
-        console.log(sexeP)
-            </script>
+         
             <%- include ('../layourts/footer') -%>
