@@ -313,7 +313,42 @@
                                     <!-- Pie Chart -->
                                   
                                     <div class="card-body shadow">
-                                        
+                                        <table class="table table-bordered"  width="100%" cellspacing="0">
+                                            <thead> <p class="text-success">LA Nationalité DES PARENTS(Mere)</p>
+                                                <tr>
+                                                    <th class="text-success">Nationalité de la mere</th>
+                                                    <th>Nombre</th>
+            
+                                                </tr>
+                                            </thead>
+                                           
+                                            <tbody>
+                                                <% mere_nat.forEach((elm , index)=>{ %>
+                                                <tr>
+                                                    <td> <%= elm.nationalite_mere %></td>
+                                                    <td> <%= elm.Nombre %></td>
+                                                </tr>
+                                                <% }); %>
+                                            </tbody>
+                                        </table>   
+                                        <table class="table table-bordered"  width="100%" cellspacing="0">
+                                            <thead> <p class="text-success">LA Nationalité DES PARENTS(Pere)</p>
+                                                <tr>
+                                                    <th class="text-success">Nationalité du pere</th>
+                                                    <th>Nombre</th>
+            
+                                                </tr>
+                                            </thead>
+                                           
+                                            <tbody>
+                                                <% pere_nat.forEach((elm , index)=>{ %>
+                                                <tr>
+                                                    <td> <%= elm.nationalite_pere %></td>
+                                                    <td> <%= elm.Nombre %></td>
+                                                </tr>
+                                                <% }); %>
+                                            </tbody>
+                                        </table> 
                                         <table class="table table-bordered"  width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>

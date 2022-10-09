@@ -2,7 +2,7 @@ let NaissanceService = require("../services/naissanceService");
 
 
 const getStatistique = async (req, res) => {
-        let sexe = [], datapro = [] ,Nb_dec, Nb_arch, fosa, sexePorption = [],sexePorptionGenere = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr ,plotMartri ,statutGenere;
+        let sexe = [], datapro = [] ,Nb_dec,mere_nat,pere_nat, Nb_arch, fosa, sexePorption = [],sexePorptionGenere = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr ,plotMartri ,statutGenere;
         await NaissanceService.getNumberNai((result) => {
                 sexe = result;
         })
@@ -68,6 +68,14 @@ const getStatistique = async (req, res) => {
                 plotMartri = result
         })
 
+      await NaissanceService.getNationnaliteMere((result)=>{
+        mere_nat = result
+        console.log(result)
+      })
+      await NaissanceService.getNationnalitePere((result)=>{
+        pere_nat = result
+        console.log(result)
+      })
         await NaissanceService.getNumCEC();
 
       await  NaissanceService.getTimeLoadingEtl((resultat) => {
@@ -102,7 +110,9 @@ const getStatistique = async (req, res) => {
                 "plotMatri" : plotMartri,
                 "statutGenere":statutGenere,
                 "sexePorptionGenere": sexePorptionGenere,
-                "datapro" : datapro
+                "datapro" : datapro , 
+                "mere_nat":mere_nat,
+                "pere_nat":pere_nat
         })
 }
 

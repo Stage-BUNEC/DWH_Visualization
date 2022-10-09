@@ -45,7 +45,25 @@ class NaissanceService {
       })
    }
    
-   
+   //cette methode permet davoir le la nationalite des parents(mere)
+   static getNationnaliteMere(callback){
+      connection.query("SELECT nationalite_mere , count(nationalite_mere) as Nombre  FROM dim_naissance "+
+      "where libelle='Acte vérifié, validé et Archivé' "+
+     " group by nationalite_mere " ,(error , result)=>{
+      if (error) throw error;
+      callback(result)
+     })
+   }
+
+      //cette methode permet davoir le la nationalite des parents(mere)
+      static getNationnalitePere(callback){
+         connection.query("SELECT nationalite_pere , count(nationalite_pere) as Nombre  FROM dim_naissance "+
+         "where libelle='Acte vérifié, validé et Archivé' "+
+        " group by nationalite_pere " ,(error , result)=>{
+         if (error) throw error;
+         callback(result)
+        })
+      }
    
 
 // permet d avoir la proportion des sexes declarees

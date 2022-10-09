@@ -25,7 +25,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     Nombre d'acte généré </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= genere %> </div>
                                             </div>
                                            
                                         </div>
@@ -48,19 +48,7 @@
                                 </div>
                             </div>
                           
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    LE NOMBRE D’ENFANT HORS MARIAGE </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">0 </div>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
+                         
                             </div>   <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
@@ -68,77 +56,13 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     Nombre d'acte archivé au Siege BUNEC</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">0  </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> <%= archive%>  </div>
                                             </div>
                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                   Nombre de pere sans profession
-                                                </div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                   Nombre de pere ayant une profession
-                                                </div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                   Nombre de declaration provenant des FOSA
-                                                </div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
                       
                            
                             </div>
@@ -146,58 +70,7 @@
                         </div>
 
                         <!-- Content Row -->
-                        <div class="row">
-                            <button class="btn-primary btn-show" onclick="toggleEl()">Ouvrir la table des statistiques</button>
-
-                            <div class="card shadow mb-4" id="show-table">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-success">Region</th>
-                                                    <th class="text-success">Departement </th>
-                                                    <th class="text-success">Arrondissement</th>
-                                                    <th class="text-success">Nom CEC</th>
-                                                    <th class="text-success">Statut de L'acte</th>
-                                                    <th class="text-success">Sexe</th>
-                                                    <th class="text-success">Nombre</th>
-                                                </tr>
-                                            </thead>
-                                            <div>
-                                                <p class="text-primary" style="font-size: 25px; text-align: center;"> Table des actes avec les statuts</p>
-                                            </div>
-                                            <tbody>
-
-                                                                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <table class="table table-bordered" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-success">Region</th>
-                                                <th class="text-success">Departement </th>
-                                                <th class="text-success">Arrondissement</th>
-                                                <th class="text-success">Nom CEC</th>
-                                                <th class="text-success">Statut de L'acte</th>
-                                                <th class="text-success">Sexe</th>
-                                                <th class="text-success">Nombre</th>
-                                            </tr>
-                                        </thead>
-<div>
-    <p class="text-primary" style="font-size: 25px; text-align: center;"> Table des actes générés uniquement</p>
-</div>
-                                        <tbody>
-
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-
-
+                        
                                 <div class="row">
 
                                     <!-- Area Chart -->
@@ -208,13 +81,19 @@
                                                     <table class="table table-bordered"  width="100%" cellspacing="0">
                                                         <thead>
                                                             <tr>
-                                                                <th class="text-success">Statistiques  des actes déclarés</th>
+                                                                <th class="text-success">Statistiques  des actes de deces déclarés</th>
                                                                 <th>Nombre</th>
                         
                                                             </tr>
                                                         </thead>
                                                        
                                                         <tbody>
+                                                            <% sexeD.forEach((elm , index)=>{ %>
+                                                                <tr>
+                                                                    <td> <%= elm.sexe %></td>
+                                                                    <td> <%= elm.Nombre %></td>
+                                                                </tr>
+                                                                <% }); %>
                                                         </tbody>
                                                     </table>
             
@@ -229,12 +108,17 @@
                                         <table class="table table-bordered"  width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-success">Statistiques sur sexe des actes généres</th>
+                                                    <th class="text-success">Statistiques sur sexe des actes de deces généres</th>
                                                     <th>Nombre</th>
             
                                                 </tr>
                                             </thead>
-                                           
+                                            <% sexeP.forEach((elm , index)=>{ %>
+                                                <tr>
+                                                    <td> <%= elm.sexe %></td>
+                                                    <td> <%= elm.Nombre %></td>
+                                                </tr>
+                                                <% }); %>
                                             <tbody>
                                             </tbody>
                                         </table>   
@@ -268,24 +152,11 @@
 
 
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-success">Statistiques la situation matrimoniale de la mère</h6>
-                        </div>
+                       
                         <div class="card-body">
 
                  <div class="table-responsive">
-                    <table class="table table-bordered"  width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-success">Nom du  Status</th>
-                                <th>Nombre Obtenu</th>
-
-                            </tr>
-                        </thead>
-                       
-                        <tbody>
-                        </tbody>
-                    </table>
+                    
 
                     <div class="card-body">
                         <div class="chart-bar">
@@ -303,5 +174,9 @@
 
                     </div>
 
-         
+                    <script>
+                        let sexeP = <%- JSON.stringify(sexeD) %> ;
+                        let data_label_matrimoniale =  <%- JSON.stringify(sexeP) %> ;
+                        let data_label_status =  <%- JSON.stringify(sexeP) %> ;
+                   </script>
             <%- include ('../layourts/footer') -%>
