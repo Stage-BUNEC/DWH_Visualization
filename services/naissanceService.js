@@ -38,7 +38,7 @@ class NaissanceService {
 
      // avoir la date de chargement dans l'entrepot
     static async getTimeLoadingEtl(callback) {
-      connection.query("SELECT date_ajout FROM dim_naissance"
+      connection.query("SELECT date_ajout FROM dim_naissance "
       +" limit 1  ", (error, result) => {
          if (error) throw error;
          callback(result)
