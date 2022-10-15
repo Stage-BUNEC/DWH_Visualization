@@ -126,7 +126,7 @@ static async getSexeProportionGenere(callback) {
          " inner join dim_arrondissement as A on A.code_departement = D.code_departement " +
          " inner join  dim_cec_principale as C on C.code_arrondissement = A.code_arrondissement " +
          " inner join dim_naissance as M on M.centre_etat = C.immatriculation " +
-         " group by libelle  , sexe ");
+         " where R.lang='fr' group by libelle  , sexe ");
 
       return resultInfo;
    }
@@ -138,7 +138,7 @@ static async getSexeProportionGenere(callback) {
          " inner join dim_arrondissement as A on A.code_departement = D.code_departement " +
          " inner join  dim_cec_principale as C on C.code_arrondissement = A.code_arrondissement " +
          " inner join dim_naissance as M on M.centre_etat = C.immatriculation " +
-         "where libelle = 'Acte vérifié, validé et Archivé' "+
+         "where libelle = 'Acte vérifié, validé et Archivé' and R.lang='fr'"+
          " group by libelle  , sexe " , (error, result) => {
             if (error) throw error;
             callback(result)
