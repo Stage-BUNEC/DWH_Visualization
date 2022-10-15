@@ -4,5 +4,7 @@ let {getStatistique , decNaissance } = require("../controllers/naissanceControll
 
 router.route("/dec_naiss").get(decNaissance) ;
 router.route("/acte_genere_naiss").get(getStatistique);
+router.route("/date_declaration").get(getStatistique);
+
 router.route("/").get(getStatistique);
 module.exports = router ;

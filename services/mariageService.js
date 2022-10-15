@@ -22,7 +22,7 @@ class MariageService {
       connection.query(`select libelle_region , libelle_departement ,libelle_arrondissement , S.libelle , count(S.libelle) from dim_region as R ` +
          " inner join dim_departement as D on D.code_region = R.code_region"
          + " inner join dim_arrondissement as A on A.code_departement = D.code_departement"
-         + " inner join dim_mariages as M on '040104' = A.code_arrondissement"
+         + " inner join dim_mariage as M on '040104' = A.code_arrondissement"
          + ` inner join dim_status as S on S.state = ${id}`
          + " group by R.libelle_region , libelle_arrondissement", (error, result) => {
             if (error) throw error;
@@ -33,7 +33,7 @@ class MariageService {
    //permet d avoir le statut des mariages
    static getMariageStatut(callback) {
       connection.query("select libelle , count(libelle) as status from dim_status  as S "
-         + "inner join dim_mariages as M "
+         + "inner join dim_mariage as M "
          + "on M.state = S.state "
          + " group by libelle ",
          (error, result) => {
@@ -57,7 +57,7 @@ class MariageService {
    //statistiques sur les nombres d epoux et epouse n'ayants pas de profession
 static  getAllProfession(callback){
    connection.query("select profession_epoux , profession_epouse  , count(profession_epoux) as NombreProfEpoux , count(profession_epouse) as NombreProfEpouse "
-   +" from dim_mariages"
+   +" from dim_mariage"
    +" group by profession_epoux , profession_epouse ", (error, result) => {
       if (error) throw error;
       callback(result)
@@ -65,7 +65,7 @@ static  getAllProfession(callback){
 }
 
  static async getNombreDeclarationEnregistrement() {
-   let nbMa = await connection.promise().query("SELECT count(id) as nombre_ma FROM dim_mariages  where dim_mariages.state  = 9") ;
+   let nbMa = await connection.promise().query("SELECT count(id) as nombre_ma FROM dim_mariage  where dim_mariage.state  = 9") ;
   // console.log(nbMa[0][0].nombre_ma);
    let nbDec = await connection.promise().query("SELECT count(num_dec) as nombre_dec FROM dim_publications") ;
   return {"nbMariage" : nbMa[0][0].nombre_ma , "nbDec" : nbDec[0][0].nombre_dec }

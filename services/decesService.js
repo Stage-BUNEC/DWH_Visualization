@@ -18,6 +18,15 @@ static getGenereBySexe(callback){
     })
 }
 
+  // avoir la date de chargement dans l'entrepot
+  static async getTimeLoadingEtl(callback) {
+    connection.query("SELECT date_ajout FROM dim_deces order by id  "
+    +" limit 1  ", (error, result) => {
+       if (error) throw error;
+       callback(result)
+    })
+ }
+
 //permet d avoir les proportions des actes de deces declares  par sexe
 
 static getDeclarebySexe(callback){

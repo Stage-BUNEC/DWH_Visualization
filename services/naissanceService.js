@@ -4,7 +4,7 @@ class NaissanceService {
    
 // permet d avoir le nombre de naissance genere
    static async getNumberNai(callback) {
-      connection.query("select count(id_naiss) as Nombre  from dim_naissance where "
+      connection.query("select count(id) as Nombre  from dim_naissance where "
     + " libelle ='Acte vérifié, validé et Archivé'", (error, result) => {
          if (error) throw error;
          callback(result)
@@ -86,7 +86,7 @@ static async getSexeProportionGenere(callback) {
 
 //permet d avoir le nombre de declaration de naissance
    static async getNumberDecNais(callback) {
-      connection.query("select count(id_naiss) as Nombre from dim_dec_naissance ", (error, result) => {
+      connection.query("select count(id) as Nombre from dim_dec_naissance ", (error, result) => {
          if (error) throw error;
          callback(result)
       })
@@ -103,7 +103,7 @@ static async getSexeProportionGenere(callback) {
 
 //permet d avoir le nombre d acte genere et archive au BUNEC siege
    static async getNumberArchiveSiege(callback) {
-      connection.query("select  count(id_naiss) as Nombre from dim_naissance " +
+      connection.query("select  count(id) as Nombre from dim_naissance " +
          " where dim_naissance.libelle = 'Archivé au Siège' ; ", (error, result) => {
             if (error) throw error;
             callback(result)

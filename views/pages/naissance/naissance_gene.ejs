@@ -148,6 +148,7 @@
                         <!-- Content Row -->
                         <div class="row">
                             <button class="btn-primary btn-show" onclick="toggleEl()">Ouvrir la table des statistiques</button>
+                           <span style="width: 20px;"></span> <a class="btn-primary btn-show pl-2" href="/date_declaration">Analyser les dates de declarations</a>
 
                             <div class="card shadow mb-4" id="show-table">
                                 <div class="card-body">
@@ -323,7 +324,7 @@
                                             </thead>
                                            
                                             <tbody>
-                                                <% mere_nat.forEach((elm , index)=>{ %>
+                                                <%       mere_nat.forEach((elm , index)=>{ %>
                                                 <tr>
                                                     <td> <%= elm.nationalite_mere %></td>
                                                     <td> <%= elm.Nombre %></td>

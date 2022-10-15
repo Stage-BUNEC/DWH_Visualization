@@ -13,9 +13,9 @@ class PublicationService {
    static getMariageTable(callback) {
       //abscence de la dim naissance
       connection.query("select num_dec , noms_epoux , noms_epouse , nationalite_epoux , nationalite_epouse ,dim_status.libelle "
-         + " from dim_mariages "
+         + " from dim_mariage "
          + " inner join dim_status "
-         + "on dim_mariages.state = dim_status.state", (error, result) => {
+         + "on dim_mariage.state = dim_status.state", (error, result) => {
             if (error) throw error;
             callback(result);
             console.log(result);
