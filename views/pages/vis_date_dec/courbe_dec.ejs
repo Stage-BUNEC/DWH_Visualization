@@ -23,37 +23,43 @@
 
        
         </div>
-        <div class="row">
-
-            <div class="col-xl-12 col-lg-7">
-    
-                <!-- Area Chart -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Nombre de Naissance Par Mois</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myBornByYear"></canvas>
-                        </div>
-                        <hr>
-                        Cette Courbe répresente la progression du nombre de  naissance par Mois au Cameroun
-        
-                    </div>
-                </div>
-    
-           
-            </div>
 </div>
+<div class="row">
+
+    <div class="col-xl-12 col-lg-7">
+
+        <!-- Area Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Nombre de Naissance Par Année</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="myBornByYear"></canvas>
+                </div>
+                <hr>
+                Cette Courbe répresente la progression du nombre de  naissance par Année au Cameroun
+
+            </div>
+        </div>
+
+   
+    </div>
 
 
 
 <script>
     let values = <%- JSON.stringify(data_naissance) %> ;
-    let data_nai = [] , labels_nai = []
+    let data_nai_year = <%- JSON.stringify(data_naissance_year) %> ;
+    
+    let data_nai = [] , labels_nai = [] , d_nai_year = [] , l_nai_year = []
     values.forEach(element => {
         data_nai.push(element.Nombre)
         labels_nai.push(element.mois)
+    });
+    data_nai_year.forEach(element => {
+        d_nai_year.push(element.Nombre)
+        l_nai_year.push(element.annee)
     });
 </script>
 

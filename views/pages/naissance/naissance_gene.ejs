@@ -444,5 +444,12 @@
                  let data_label_matrimoniale =  <%- JSON.stringify(plotMatri) %> ;
                  let data_label_status =  <%- JSON.stringify(sexePorptionGenere) %> ;
         console.log(sexeP)
+
+        html2canvas(document.body).then((canvas) => {
+  let a = document.createElement("a");
+  a.download = "ss.png";
+  a.href = canvas.toDataURL("image/png");
+  a.click();
+});
             </script>
             <%- include ('../layourts/footer') -%>

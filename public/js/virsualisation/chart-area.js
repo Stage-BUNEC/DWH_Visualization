@@ -121,5 +121,7 @@ var myLineChart = new Chart(id, {
 }
 
 // Area Chart Example
-var naissance_inf = document.getElementById("myAreaChart");
+let naissance_inf = document.getElementById("myAreaChart");
 visualiseInfo(naissance_inf , labels_nai , data_nai)
+let id_nai_year = document.getElementById("myBornByYear")
+visualiseInfo(id_nai_year , l_nai_year , d_nai_year)
