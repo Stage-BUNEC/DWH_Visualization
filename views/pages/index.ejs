@@ -239,6 +239,22 @@
                     let state =  <%- JSON.stringify(state) %> ;
                     let libelle =  <%- JSON.stringify(libelle) %> ;
                     let declaration =  <%- JSON.stringify(publication) %> ;
+
+                    
+                    function generatePDF() {
+  
+  let element = document.getElementById('content-wrapper');
+  let opt = {
+      margin:       0,
+      filename:     'statistique_mariage.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save();
+
+}
             </script>
 
             <%- include ('./layourts/footer') -%>
