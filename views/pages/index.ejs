@@ -21,24 +21,7 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                           Nombre de Mariage Annuel      </div>
-                                           Digit
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            REPRISE
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -256,6 +239,22 @@
                     let state =  <%- JSON.stringify(state) %> ;
                     let libelle =  <%- JSON.stringify(libelle) %> ;
                     let declaration =  <%- JSON.stringify(publication) %> ;
+
+                    
+                    function generatePDF() {
+  
+  let element = document.getElementById('content-wrapper');
+  let opt = {
+      margin:       0,
+      filename:     'statistique_mariage.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save();
+
+}
             </script>
 
             <%- include ('./layourts/footer') -%>

@@ -1,0 +1,197 @@
+<%- include ('../layourts/header') -%>
+    <%- include ('../layourts/sidebar' , entity_name  ) -%>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+
+               
+                <%- include ('../layourts/topbar', date , heure) -%>
+                    <div class="container-fluid">
+
+                        <!-- Page Heading -->
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <h1 class="h3 mb-0 text-gray-800"><%= entity_name %></h1>
+
+                        </div>
+
+                        <!-- Content Row -->
+                        <div class="row">
+
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Nombre d'acte généré </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= genere %> </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Nombre de déclaration de deces total</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">  <%= nbdeces %> </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                         
+                            </div>   <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Nombre d'acte archivé au Siege BUNEC</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> <%= archive%>  </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                           
+                            </div>
+                            
+                        </div>
+
+                        <!-- Content Row -->
+                        
+                                <div class="row">
+
+                                    <!-- Area Chart -->
+                                    <div class="col-xl-8 col-lg-7">
+                                        <div class="card shadow mb-4">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered"  width="100%" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-success">Statistiques  des actes de deces déclarés</th>
+                                                                <th>Nombre</th>
+                        
+                                                            </tr>
+                                                        </thead>
+                                                       
+                                                        <tbody>
+                                                            <% sexeD.forEach((elm , index)=>{ %>
+                                                                <tr>
+                                                                    <td> <%= elm.sexe %></td>
+                                                                    <td> <%= elm.Nombre %></td>
+                                                                </tr>
+                                                                <% }); %>
+                                                        </tbody>
+                                                    </table>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <!-- Pie Chart -->
+                                  
+                                    <div class="card-body shadow">
+                                        
+                                        <table class="table table-bordered"  width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-success">Statistiques sur sexe des actes de deces généres</th>
+                                                    <th>Nombre</th>
+            
+                                                </tr>
+                                            </thead>
+                                            <% sexeP.forEach((elm , index)=>{ %>
+                                                <tr>
+                                                    <td> <%= elm.sexe %></td>
+                                                    <td> <%= elm.Nombre %></td>
+                                                </tr>
+                                                <% }); %>
+                                            <tbody>
+                                            </tbody>
+                                        </table>   
+                                      <div>  <p class="text-success">Proportion en sexe des actes généres</p></div>
+                                        <div class="chart-bar pt-4 pb-2">
+                                                 <canvas id="statusProportion"></canvas>
+                                          
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+
+                                
+                <!-- Pie Chart -->
+                <div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div>  <p class="text-success" style="font-weight: bold;">Proportion en sexe des actes declarés</p></div>
+                        <div class="card-body">
+                            <div class="chart-pie pt-4 pb-2">
+                                <canvas id="sexePorportion"></canvas>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+
+
+                    <div class="card shadow mb-4">
+                       
+                        <div class="card-body">
+
+                 <div class="table-responsive">
+                    
+
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="matriProportion"></canvas>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                    <!-- Approach -->
+                  
+                </div>
+            </div>
+
+
+                    </div>
+
+                    <script>
+                        let sexeP = <%- JSON.stringify(sexeD) %> ;
+                        let data_label_matrimoniale =  <%- JSON.stringify(sexeP) %> ;
+                        let data_label_status =  <%- JSON.stringify(sexeP) %> ;
+
+                        function generatePDF() {
+  
+        let element = document.getElementById('content-wrapper');
+        let opt = {
+            margin:       0,
+            filename:     'statistique_deces.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save();
+
+}
+                   </script>
+            <%- include ('../layourts/footer') -%>
