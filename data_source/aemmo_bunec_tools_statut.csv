@@ -1,0 +1,11 @@
+id#ordering#state#checked_out#checked_out_time#created_by#modified_by#valeur#libelle#lang
+1#1#1#0#"0000-00-00 00:00:00"#161#161#0#"Déclaration en cours"#fr
+2#2#1#0#"0000-00-00 00:00:00"#161#161#1#"Déclaration validée"#fr
+3#3#1#0#"0000-00-00 00:00:00"#161#161#2#"Déclaration validée et acte en cours"#fr
+4#4#1#0#"0000-00-00 00:00:00"#161#161#3#"Déclaration supprimée"#fr
+5#5#1#0#"0000-00-00 00:00:00"#161#161#5#"Acte en cours de saisie chez le Secrétaire"#fr
+6#6#1#0#"0000-00-00 00:00:00"#161#161#6#"Acte saisie et transmis à l'officier"#fr
+7#7#1#0#"0000-00-00 00:00:00"#161#161#7#"Acte en cours de vérification par l'officier"#fr
+8#8#1#0#"0000-00-00 00:00:00"#161#161#8#"Acte vérifié et renvoyer au Secrétaire pour correction"#fr
+9#9#1#0#"0000-00-00 00:00:00"#161#161#9#"Acte vérifié# validé et Archivé"#fr
+10#10#1#0#"0000-00-00 00:00:00"#161#161#10#"Archivé au Siège"#fr
