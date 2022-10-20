@@ -1,1 +1,23 @@
-http://mkto-k0023.com/dc/5w4dZQ4HH6-8aj1DCgc3u9vYtrgywd1eUxD2vj1MTEGf_y395O4_4sxM29-hnjTajbtq4_19QZkqnYh-UBjqLh3ViiR4d2qDydzriou3Myq3iIxhAWtNSd5HBhpd4B_y/MzQ3LUlBVC02NzcAAAGHARMqHa37x9E6HKYIEqGBP_zzgnr4gGLQIWBvSLdtlP1C4ULJqXi19QV6Q5CbnIQVUMgpN2E=
+let connection = require('../config/db');
+
+class NaissanceTableService {
+
+   static getDeclarationTable(callback) {
+      //
+      connection.query("SELECT num_dec ,sexe, nationalite_mere , nationalite_pere , situation_matrimoniale_mere , libelle FROM datawarehouse.dim_dec_naissance;", (error, result) => {
+         if (error) throw error;
+         callback(result);
+        // console.log(result);
+      })
+   }
+   
+   static getNaissanceGenereTable(callback) {
+      //abscence de la dim naissance
+      connection.query("select num_dec , num_acte , sexe ,centre_etat , lieu_naiss , libelle from dim_naissance  where libelle ='Acte vérifié, validé et Archivé' ", (error, result) => {
+            if (error) throw error;
+            callback(result);
+        //    console.log(result);
+         })
+   }
+}
+module.exports = NaissanceTableService
