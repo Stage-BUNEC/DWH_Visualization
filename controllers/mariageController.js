@@ -2,6 +2,9 @@ let MariageService = require("../services/mariageService")
 let PublicationService = require("../services/publicationService")
 let NaissanceService = require("../services/naissanceService")
 
+
+//cette méthode permet de retourner tous les informations concernant les mariages
+
 const mariageInfo = async (req, res) => {
     const labels = [];
     const data = [];
@@ -64,6 +67,9 @@ const mariageInfo = async (req, res) => {
         "heure" : date_mjr.toLocaleTimeString() 
     })
 }
+
+//cette methode permet de retourner la table de publication
+
 const getPublicationTable = (req, res) => {
     let data = [];
     PublicationService.getPublicationTable((result) => {
@@ -71,6 +77,8 @@ const getPublicationTable = (req, res) => {
     })
 
 }
+
+//cette methode permet de retourner la table de mariage pour lesquels les actes sont generes
 
 const getMariageTable = (req, res) => {
     let data = [];

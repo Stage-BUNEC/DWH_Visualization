@@ -1,6 +1,9 @@
 let NaissanceService = require("../services/naissanceService");
 let NaissanceTableService = require("../services/NaissanceTableService");
 
+
+// cette mthode permet de retourner les statistiques sur les naissance
+
 const getStatistique = async (req, res) => {
         let sexe = [], datapro = [] ,Nb_dec,mere_nat,pere_nat, Nb_arch, fosa, sexePorption = [],sexePorptionGenere = [], pere_travail = 0, hors_mariage = 0, pere_sans_travail = 0, date_mjr ,plotMartri ,statutGenere;
         await NaissanceService.getNumberNai((result) => {
@@ -116,12 +119,16 @@ const getStatistique = async (req, res) => {
         })
 }
 
+//cette methode permet de retourner la table contenant les declaration de naissance
+
 const decNaissance = ((req, res) => {
         let data = [];
         NaissanceTableService.getDeclarationTable((result) => {
             res.render("pages/naissance/declaration", { "data": result,"entity_name":"Tableau de declaration de naissance" })
         })
 })
+
+//cette methode permet de retourner la table contenant les actes de naissance generes
 
 const naissanceGenereTable = ((req, res) => {
         let data = [];

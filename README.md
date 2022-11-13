@@ -1,7 +1,15 @@
-"# BUNEC_VISUALISATION" 
+"# BUNEC_VISUALISATION FOR REPORTING" 
 
 
-### Pour installer , deplace toi dans le dossier ou tu as cloné et fait 
- npm install
-### pour lancer le serveur de developpement :
- npm start
+# Installation de l'application  
+
+## 1- Cloner le projet sur le depot github
+## Dezipper le projet
+## Installer les dépendances
+* Avoir NodeJs version 14 ou plus.
+    Se deplacer dans le dossier de l'application et taper la commande 'npm install'
+* Avoir Mysql
+* Avoir les données dans les tables
+
+## Lancer l'application ou alors le serveur
+* Se deplacer dans le dossier de l'application et taper la commande 'npm start'
