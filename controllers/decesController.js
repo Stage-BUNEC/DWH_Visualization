@@ -1,5 +1,7 @@
 let DecesService =  require("../services/decesService")
 
+// cette mthode permet de retourner les statistiques sur les deces
+
 const getStatistique = async (req, res) =>{
     let genere = 0 , sexeP =[] ,sexeD= [] , archive , date ;
     await DecesService.getNumberDecesGenere((result)=>{

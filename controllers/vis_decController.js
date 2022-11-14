@@ -1,6 +1,8 @@
 let Vis_decService = require("../services/vis_decService");
 let { FormatMois } = require("../services/utils")
 
+// cette methode permet de retourner des donnees dans la vue pour la construction du graphe de virsualisation
+// de naissance
 const getGraph = async (req, res) => {
    let data = [], data2 = []
    await Vis_decService.getNaissanceByMois((result) => {

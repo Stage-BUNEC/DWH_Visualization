@@ -13,7 +13,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Table des declarations de Naissance</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Table des  Naissances généres</h1>
      
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -25,21 +25,21 @@
                                     <thead>
                                         <tr>
                                             <th>Numero de declaration</th>
+                                            <th>Numero de l' acte</th>
                                             <th>Sexe</th>
-                                            <th>Nationalite de la mere</th>
-                                            <th>Nationalite du pere</th>
-                                            <th>Situation Matrimoniale de la Mere</th>
-                                            <th>Statut de la declaration</th>
+                                            <th>Numero du CEC</th>
+                                            <th>Lieu de Naissance</th>
+                                            <th>Statut de l'acte de Naissance</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Numero de declaration</th>
+                                            <th>Numero de l' acte</th>
                                             <th>Sexe</th>
-                                            <th>Nationalite de la mere</th>
-                                            <th>Nationalite du pere</th>
-                                            <th>Situation Matrimoniale de la Mere</th>
-                                            <th>Statut de la declaration</th>
+                                            <th>Numero du CEC</th>
+                                            <th>Lieu de Naissance</th>
+                                            <th>Statut de l'acte de Naissance</th>
                                            
                                         </tr>
                                     </tfoot>
@@ -47,10 +47,10 @@
                                         <% data.forEach((elm , index)=>{ %>
                                         <tr>
                                             <td> <%= elm.num_dec %></td>
+                                            <td> <%= elm.num_acte %></td>
                                             <td> <%= elm.sexe %></td>
-                                            <td> <%= elm.nationalite_mere %></td>
-                                            <td> <%= elm.nationalite_pere %></td>
-                                            <td> <%= elm.situation_matrimoniale_mere %></td>
+                                            <td> <%= elm.centre_etat %></td>
+                                            <td> <%= elm.lieu_naiss %></td>
                                             <td> <%= elm.libelle %></td>
 
                                         </tr>

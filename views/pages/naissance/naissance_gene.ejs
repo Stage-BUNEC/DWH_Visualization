@@ -24,7 +24,8 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Nombre d'acte généré </div>
+                                                    <a  class="text-xs font-weight-bold text-success text-uppercase mb-1" href="/genereNaissanceTable">  Nombre d'acte généré</a>
+                                                    </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><%= Nombre_sexe[0].Nombre %> </div>
                                             </div>
                                            
@@ -39,7 +40,8 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Nombre de déclaration de naissance total</div>
+                                                    <a class="text-xs font-weight-bold text-success text-uppercase mb-1" href="/dec_naiss"> Nombre de déclaration de naissance total</a>
+                                                   </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"> <%= nombre_dec%></div>
                                             </div>
 
@@ -248,36 +250,6 @@
                         </div>
 
 
-
-                        <% datapro.forEach((elm)=>{ %>
-                            <button class="deroule">
-                                <%= elm.libelle_region %>
-                            </button>
-                            <div class="panel">
-
-                                <div class="row">
-                                    <p>
-                                        <%= elm.libelle_departement %>
-                                    </p>
-                                    <p>
-                                        <%= elm.libelle_arrondissement %>
-                                    </p>
-                                    <p>
-                                        <%= elm.nomcec %>
-                                    </p>
-                                    <p class="text-success">
-                                        <%= elm.libelle %>
-                                    </p>
-                                    <p>
-                                        <%= elm.sexe %>
-                                    </p>
-                                    <p>
-                                        <%= elm.Nombre %>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <% }); %>
 
 
                                 <div class="row">
